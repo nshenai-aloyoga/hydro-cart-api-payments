@@ -3,6 +3,7 @@ import type {CartLayout} from '~/components/CartMain';
 import {CartForm, Money, type OptimisticCart} from '@shopify/hydrogen';
 import { useRef } from 'react';
 import { FetcherWithComponents } from '@remix-run/react';
+import AmazonPayButton from "../components/amazonpaybutton";
 
 type CartSummaryProps = {
   cart: OptimisticCart<CartApiQueryFragment | null>;
@@ -27,9 +28,7 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
         </dd>
       </dl>
       <br/>
-      <a href={cart.checkoutUrl}>
-      <button className="btn-primary">Checkout with Accelerated Payments</button>
-    </a>
+     <AmazonPayButton />
     <br/> 
       <CartDiscounts discountCodes={cart.discountCodes} />
       <CartGiftCard giftCardCodes={cart.appliedGiftCards} />
