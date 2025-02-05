@@ -9,6 +9,7 @@ type CartSummaryProps = {
   cart: OptimisticCart<CartApiQueryFragment | null>;
   layout: CartLayout;
 };
+const paymentUrl = "https://hydro-cart-api-payments-1ee6d013d4ae83b16f1b.o2.myshopify.dev/cart?payment=amazonpay";
 
 export function CartSummary({cart, layout}: CartSummaryProps) {
   const className =
@@ -29,7 +30,8 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
       </dl>
       <br/>
       <h3>Sample Amazon pay button here</h3>
-     <AmazonPayButton />
+      {console.log("URL", cart.checkoutUrl) }
+     <AmazonPayButton url={paymentUrl}/>
     <br/> 
       <CartDiscounts discountCodes={cart.discountCodes} />
       <CartGiftCard giftCardCodes={cart.appliedGiftCards} />

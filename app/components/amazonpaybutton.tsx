@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-const AmazonPayButton: React.FC = () => {
+const AmazonPayButton: React.FC = ({url}) => {
   useEffect(() => {
     // Check if the script is already added
     if (!document.getElementById("amazon-pay-script")) {
@@ -21,7 +21,7 @@ const AmazonPayButton: React.FC = () => {
     }
   }, []);
 
-  return <div id="amazon-pay-button"><a href="#">AmazonPay</a></div>;
+  return <div id="amazon-pay-button"><a href={url}>AmazonPay</a></div>;
 };
 
 export default AmazonPayButton;
