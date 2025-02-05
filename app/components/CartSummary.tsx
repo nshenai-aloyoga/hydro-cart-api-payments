@@ -27,7 +27,7 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
         </dd>
       </dl>
       <br/>
-      <a href={{cart.checkoutUrl}}>
+      <a href={cart.checkoutUrl}>
       <button className="btn-primary">Checkout with Accelerated Payments</button>
     </a>
     <br/> 
