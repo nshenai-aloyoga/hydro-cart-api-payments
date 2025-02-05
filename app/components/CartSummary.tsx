@@ -28,6 +28,7 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
         </dd>
       </dl>
       <br/>
+      <h3>Sample Amazon pay button here</h3>
      <AmazonPayButton />
     <br/> 
       <CartDiscounts discountCodes={cart.discountCodes} />
