@@ -21,7 +21,7 @@ const AmazonPayButton: React.FC = () => {
     }
   }, []);
 
-  return <div id="amazon-pay-button"></div>;
+  return <div id="amazon-pay-button"><a href="#">AmazonPay</a></div>;
 };
 
 export default AmazonPayButton;
