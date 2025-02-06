@@ -6,30 +6,30 @@ declare global {
   }
 }
 
-const AmazonPayButton: React.FC = ({url}) => {
+const CustomPayButton: React.FC = ({url}) => {
   useEffect(() => {
     // Check if the script is already added
     if (!document.getElementById("amazon-pay-script")) {
       const script = document.createElement("script");
-      script.src = "https://static-na.payments-amazon.com/checkout.js";
+      script.src = "https://static-na.payments-amazon.com/checkout.js"; //Amazon pay script
       script.id = "amazon-pay-script";
       script.async = true;
       script.onload = () => {
         console.log("Amazon Pay SDK Loaded");
       };
-      document.body.appendChild(script);
+      document.getElementById("custom-pay-button").appendChild(script);
     }
   }, []);
 
-  return <div id="amazon-pay-button"><a href={url}>AmazonPay</a></div>;
+  return <div id="custom-pay-button"><a href={url}>AmazonPay</a></div>;
 };
 
-export default AmazonPayButton;
+export default CustomPayButton;
 
 
 // import { useEffect } from "react";
 
-// const AmazonPayButton: React.FC = () => {
+// const CustomPayButton: React.FC = () => {
 //   useEffect(() => {
 //     if (window.amazon) {
 //       window.amazon.Pay.renderButton("#amazon-pay-button", {
@@ -46,4 +46,4 @@ export default AmazonPayButton;
 //   return <div id="amazon-pay-button"></div>;
 // };
 
-// export default AmazonPayButton;
+// export default CustomPayButton;

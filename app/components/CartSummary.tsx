@@ -3,17 +3,17 @@ import type {CartLayout} from '~/components/CartMain';
 import {CartForm, Money, type OptimisticCart} from '@shopify/hydrogen';
 import { useRef } from 'react';
 import { FetcherWithComponents } from '@remix-run/react';
-import AmazonPayButton from "../components/amazonpaybutton";
+import CustomPayButton from '~/components/CustomPayButton';
 
 type CartSummaryProps = {
   cart: OptimisticCart<CartApiQueryFragment | null>;
   layout: CartLayout;
 };
-const paymentUrl = "https://hydro-cart-api-payments-1ee6d013d4ae83b16f1b.o2.myshopify.dev/cart?payment=amazonpay";
 
 export function CartSummary({cart, layout}: CartSummaryProps) {
   const className =
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
+    const paymentUrl = `${cart.shopify}?payment=amazonpay`;
 
   return (
     <div aria-labelledby="cart-summary" className={className}>
@@ -31,7 +31,7 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
       <br/>
       <h3>Sample Amazon pay button here</h3>
       {console.log("URL", cart.checkoutUrl) }
-     <AmazonPayButton url={paymentUrl}/>
+     <CustomPayButton url={paymentUrl}/>
     <br/> 
       <CartDiscounts discountCodes={cart.discountCodes} />
       <CartGiftCard giftCardCodes={cart.appliedGiftCards} />
