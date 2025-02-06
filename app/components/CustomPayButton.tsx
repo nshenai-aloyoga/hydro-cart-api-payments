@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styles from "../assets/styles.css"; 
 
 declare global {
   interface Window {
@@ -6,28 +7,49 @@ declare global {
   }
 }
 
-const CustomPayButton: React.FC = ({url}) => {
+interface CustomPayButtonProps {
+  url: string;
+}
+
+const CustomPayButton: React.FC<CustomPayButtonProps> = ({ url }) => {
   useEffect(() => {
-    // Check if the script is already added
+    // Ensure script is not added multiple times
     if (!document.getElementById("amazon-pay-script")) {
       const script = document.createElement("script");
-      script.src = "https://static-na.payments-amazon.com/checkout.js"; //Amazon pay script
+      script.src = "https://static-na.payments-amazon.com/checkout.js"; // Amazon Pay script
       script.id = "amazon-pay-script";
       script.async = true;
       script.onload = () => {
         console.log("Amazon Pay SDK Loaded");
+
+        if (window.amazon) {
+          window.amazon.Pay.renderButton("#amazon-pay-button", {
+            merchantId: "YOUR_AMAZON_PAY_MERCHANT_ID", // Replace with actual Merchant ID
+            createCheckoutSessionConfig: {
+              payloadJSON: "YOUR_PAYLOAD_JSON", // Dynamically generated payload
+              signature: "YOUR_SIGNATURE", // Generated using your private key
+              publicKeyId: "YOUR_PUBLIC_KEY_ID",
+            },
+          });
+        }
       };
-      document.getElementById("custom-pay-button").appendChild(script);
+      document.body.appendChild(script); // Append to body instead of a div
     }
   }, []);
 
-  return <div id="custom-pay-button"><a href={url}>
-      <img src="https://m.media-amazon.com/images/G/01/AmazonPay/Maxo/amazonpay-logo-rgb_drk_1.svg" alt="Amazon Pay"/>
-      </a></div>;
+  return (
+    <div id="amazon-pay-button" className={styles.customPayButton}>
+      <a href={url}>
+        <img 
+          src="https://m.media-amazon.com/images/G/01/AmazonPay/Maxo/amazonpay-logo-rgb_drk_1.svg" 
+          alt="Amazon Pay"
+        />
+      </a>
+    </div>
+  );
 };
 
 export default CustomPayButton;
-
 
 // import { useEffect } from "react";
 

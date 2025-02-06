@@ -1,0 +1,21 @@
+.custom-pay-button {
+    background-color: #ffc438;
+    border: none;
+    margin-top: 12px !important;
+    outline: none;
+    &:hover {
+      background-color: #f2ba36;
+      cursor: pointer;
+    }
+    grid-row: 1 / 2;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    grid-template-rows: 13% 13% 1fr 1fr 10% 16%;
+    grid-template-columns: 4% 10% 6% 1fr 6% 10% 4%;
+    justify-items: center;
+    justify-self: stretch;
+    align-self: stretch;
+  }
