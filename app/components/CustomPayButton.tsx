@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "../assets/styles.css"; 
+import  "../assets/styles.css"; 
 
 declare global {
   interface Window {
@@ -38,7 +38,7 @@ const CustomPayButton: React.FC<CustomPayButtonProps> = ({ url }) => {
   }, []);
 
   return (
-    <div id="amazon-pay-button" className={styles.customPayButton}>
+    <div id="amazon-pay-button" className="custom-pay-button">
       <a href={url}>
         <img 
           src="https://m.media-amazon.com/images/G/01/AmazonPay/Maxo/amazonpay-logo-rgb_drk_1.svg" 
