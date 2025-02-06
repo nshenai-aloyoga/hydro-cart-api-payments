@@ -37,9 +37,18 @@ const CustomPayButton: React.FC<CustomPayButtonProps> = ({ url }) => {
     }
   }, []);
 
+  const handleRedirect = () => {
+    if (url) {
+      const reviewUrl = `${url}?step=review`; // Modify URL to go to review step
+      window.location.href = reviewUrl;
+    } else {
+      alert("Error: No checkout URL available.");
+    }
+  };
+
   return (
     <div id="amazon-pay-button" className="custom-pay-button">
-      <a href={url}>
+      <a onClick={handleRedirect}>
         <img 
           src="https://m.media-amazon.com/images/G/01/AmazonPay/Maxo/amazonpay-logo-rgb_drk_1.svg" 
           alt="Amazon Pay"
