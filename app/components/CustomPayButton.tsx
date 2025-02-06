@@ -21,7 +21,9 @@ const CustomPayButton: React.FC = ({url}) => {
     }
   }, []);
 
-  return <div id="custom-pay-button"><a href={url}><img src="https://m.media-amazon.com/images/G/01/AmazonPay/Maxo/amazonpay-logo-rgb_drk_1.svg" alt="Amazon Pay"></a></div>;
+  return <div id="custom-pay-button"><a href={url}>
+      <img src="https://m.media-amazon.com/images/G/01/AmazonPay/Maxo/amazonpay-logo-rgb_drk_1.svg" alt="Amazon Pay"/>
+      </a></div>;
 };
 
 export default CustomPayButton;

@@ -13,7 +13,7 @@ type CartSummaryProps = {
 export function CartSummary({cart, layout}: CartSummaryProps) {
   const className =
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
-    const paymentUrl = `${cart.shopify}?payment=amazonpay`;
+    const paymentUrl = `${cart.checkoutUrl}?payment=amazonpay`;
 
   return (
     <div aria-labelledby="cart-summary" className={className}>
