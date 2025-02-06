@@ -104,7 +104,6 @@ export default function Cart() {
   return (
     <div className="cart">
       <h1>Cart</h1>
-      <h4>This is where we test accelerated payments</h4>
       <CartMain layout="page" cart={cart} />
     </div>
   );

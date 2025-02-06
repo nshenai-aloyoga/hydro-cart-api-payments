@@ -29,7 +29,7 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
         </dd>
       </dl>
       <br/>
-      <h3>Sample Amazon pay button here</h3>
+      <h3>Sample Accelerated button here</h3>
       {console.log("URL", cart.checkoutUrl) }
      <CustomPayButton url={paymentUrl}/>
     <br/> 

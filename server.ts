@@ -4,6 +4,7 @@ import * as remixBuild from 'virtual:remix/server-build';
 import {storefrontRedirect} from '@shopify/hydrogen';
 import {createRequestHandler} from '@shopify/remix-oxygen';
 import {createAppLoadContext} from '~/lib/context';
+import { Headers } from "@remix-run/node";
 
 /**
  * Export a fetch handler in module format.
@@ -31,7 +32,7 @@ export default {
         getLoadContext: () => appLoadContext,
       });
 
-      const response = await handleRequest(request);
+      let response = await handleRequest(request);
 
       if (appLoadContext.session.isPending) {
         response.headers.set(
@@ -52,6 +53,14 @@ export default {
           storefront: appLoadContext.storefront,
         });
       }
+      /**
+       * Add Content Security Policy (CSP) headers
+       */
+      response = new Response(response.body, response);
+      response.headers.set(
+        "Content-Security-Policy",
+        "default-src 'self' https://cdn.shopify.com https://shopify.com https://static-na.payments-amazon.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static-na.payments-amazon.com;"
+      );
 
       return response;
     } catch (error) {
